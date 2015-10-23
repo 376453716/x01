@@ -11,7 +11,7 @@ import java.util.Date;
  */
 
 @Entity
-@Table(name = "user")
+@Table(name = "x_user")
 public class User {
     private long id;
     private String name;

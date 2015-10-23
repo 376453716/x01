@@ -14,7 +14,7 @@ import java.util.List;
 @Service("messageServiceH")
 public class MessageServiceHImpl implements MessageService {
     @Autowired
-    private MessageDao messageDao;
+    private MessageDao messageDaoH;
 
     @Override
     public void sayHello() {
@@ -22,22 +22,22 @@ public class MessageServiceHImpl implements MessageService {
     }
 
     @Override
-    public User getUser(String id) {
-        return messageDao.getUser(id);
+    public User getUser(Long id) {
+        return messageDaoH.getEntity(id);
     }
 
     @Override
-    public int update(User user) {
-        return messageDao.update(user);
+    public void update(User user) {
+        messageDaoH.updateEntity(user);
     }
 
     @Override
-    public int insert(User user) {
-        return messageDao.insert(user);
+    public void insert(User user) {
+        messageDaoH.saveEntity(user);
     }
 
     @Override
     public List<User> getAll() {
-        return messageDao.getAll();
+        return messageDaoH.listEntity();
     }
 }

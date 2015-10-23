@@ -27,12 +27,17 @@ public class UserTest {
     Logger logger = Logger.getLogger(this.getClass());
     @Autowired
     private MessageService messageServiceH;
+    @Autowired
+    private MessageService messageService;
 
     @Test
     public void testUser() {
         messageServiceH.sayHello();
-        User user = messageServiceH.getUser("1");
+        User user = messageServiceH.getUser(1l);
         logger.info("getUser1====" + user);
+        messageService.sayHello();
+        User user2 = messageService.getUser(1l);
+        logger.info("getUser1====" + user2);
     }
 /*    @Test
     public void testUser() {

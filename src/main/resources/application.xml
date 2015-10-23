@@ -41,7 +41,7 @@
         <property name="hibernateProperties">
             <value>
                 <!-- 设置数据库方言 -->
-                hibernate.dialect=org.hibernate.dialect.MySQLDialect
+                hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
                 <!-- 设置自动创建|更新|验证数据库表结构 -->
                 hibernate.hbm2ddl.auto=update
                 <!-- 是否在控制台显示sql -->
@@ -53,9 +53,9 @@
                 <!-- 是否开启查询缓存 -->
                 hibernate.cache.use_query_cache=false
                 <!-- 数据库批量查询最大数 -->
-                hibernate.jdbc.fetch_size=50
+                hibernate.jdbc.fetch_size=1000
                 <!-- 数据库批量更新、添加、删除操作最大数 -->
-                hibernate.jdbc.batch_size=50
+                hibernate.jdbc.batch_size=1000
                 <!-- 是否自动提交事务 -->
                 hibernate.connection.autocommit=true
                 <!-- 指定hibernate在何时释放JDBC连接 -->
@@ -71,5 +71,12 @@
         <property name="packagesToScan" value="com.xh.Entity"/>
     </bean>
 
+    <bean id="hibernageTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactoryH"/>
+    </bean>
+    <!-- <bean id="hibernateDaoSupport" class="org.springframework.orm.hibernate4.support.HibernateDaoSupport"
+           abstract="true">
+         <property name="hibernateTemplate" ref="hibernageTemplate"/>
+     </bean>-->
 
 </beans>

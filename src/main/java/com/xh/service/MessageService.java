@@ -10,11 +10,11 @@ import java.util.List;
 public interface MessageService {
     void sayHello();
 
-    User getUser(String id);
+    User getUser(Long id);
 
-    int update(User user);
+    void update(User user);
 
-    int insert(User user);
+    void insert(User user);
 
     List<User> getAll();
 }

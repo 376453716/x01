@@ -22,22 +22,22 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public User getUser(String id) {
-        return messageDao.getUser(id);
+    public User getUser(Long id) {
+        return messageDao.getEntity(id);
     }
 
     @Override
-    public int update(User user) {
-        return messageDao.update(user);
+    public void update(User user) {
+        messageDao.updateEntity(user);
     }
 
     @Override
-    public int insert(User user) {
-        return messageDao.insert(user);
+    public void insert(User user) {
+        messageDao.saveEntity(user);
     }
 
     @Override
     public List<User> getAll() {
-        return messageDao.getAll();
+        return messageDao.listEntity();
     }
 }

@@ -9,20 +9,20 @@
         <result property="birthday" column="birthday"/>
     </resultMap>
 
-    <select id="getUser" parameterType="String" resultMap="user1">
-        select id,name,birthday from user where id=#{id}
+    <select id="getEntity" parameterType="Long" resultMap="user1">
+        select id,name,birthday from x_user where id=#{id}
     </select>
 
-    <update id="update" parameterType="com.xh.Entity.User">
-        update user set birthday = #{birthday},name=#{name} where id=#{id}
+    <update id="updateEntity" parameterType="com.xh.Entity.User">
+        update x_user set birthday = #{birthday},name=#{name} where id=#{id}
     </update>
 
-    <update id="insert" parameterType="com.xh.Entity.User">
-      insert user (id,name,birthday) values (#{id},#{name},#{birthday})
+    <update id="saveEntity" parameterType="com.xh.Entity.User">
+      insert x_user (id,name,birthday) values (#{id},#{name},#{birthday})
     </update>
 
-    <select id="getAll" resultMap="user1">
-        select * from user;
+    <select id="listEntity" resultMap="user1">
+        select * from x_user;
     </select>
 
 </mapper>
