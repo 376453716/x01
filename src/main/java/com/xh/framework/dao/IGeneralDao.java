@@ -8,11 +8,11 @@ import java.util.List;
  */
 public interface IGeneralDao<T, PK extends Serializable> {
 
-    public void saveEntity(T entity);
+    void saveEntity(T entity);
 
-    public void updateEntity(T entity);
+    void updateEntity(T entity);
 
-    public T getEntity(PK id);
+    T getEntity(PK id);
 
-    public List<T> listEntity();
+    List<T> listEntity();
 }

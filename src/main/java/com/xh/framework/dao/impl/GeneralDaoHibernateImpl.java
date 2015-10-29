@@ -20,23 +20,19 @@ public abstract class GeneralDaoHibernateImpl<T, PK extends Serializable> extend
         this.entityClass = entityClass;
     }
 
-    @Override
     public void saveEntity(T entity) {
         this.getHibernateTemplate().save(entity);
     }
 
-    @Override
     public void updateEntity(Object entity) {
         this.getHibernateTemplate().saveOrUpdate(entity);
     }
 
-    @Override
     public List<T> listEntity() {
         this.getHibernateTemplate().find("From User");
         return null;
     }
 
-    @Override
     public T getEntity(PK id) {
         T entity = this.getHibernateTemplate().get(entityClass, id);
         return entity;
