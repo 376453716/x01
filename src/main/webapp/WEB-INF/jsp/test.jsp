@@ -12,5 +12,15 @@
 </head>
 <body>
 spring mvc test.
+
+<form action="/base/test">
+    <input type="text" name="name"/>
+    <input type="submit">
+</form>
+
+<form action="/base/test">
+    <input type="text" name="name"/>
+    <input type="submit">
+</form>
 </body>
 </html>
