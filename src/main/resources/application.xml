@@ -75,4 +75,16 @@
 
     <import resource="redis.xml"/>
 
+    <bean id="freeMarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/freemark/"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="datetime_format">dd/mm/yyyy</prop>
+                <prop key="date_format">dd/mm/yyyy</prop>
+                <prop key="time_format">dd/mm/yyyy</prop>
+            </props>
+        </property>
+    </bean>
+
 </beans>

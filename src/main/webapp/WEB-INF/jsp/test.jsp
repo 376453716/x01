@@ -18,7 +18,7 @@ spring mvc test.
     <input type="submit">
 </form>
 
-<form action="/base/test">
+<form action="/base/test2">
     <input type="text" name="name"/>
     <input type="submit">
 </form>

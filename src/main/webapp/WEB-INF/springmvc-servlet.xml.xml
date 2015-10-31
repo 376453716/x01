@@ -19,14 +19,17 @@
         </property>
     </bean>-->
 
-    <bean id="parameterMethodNameResolver"
-          class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
-        <property name="defaultMethodName" value="method"/>
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+
+    <bean class="com.xh.web.BaseController">
+        <!--<property name="methodNameResolver" ref="methodNameResolver"/>-->
     </bean>
 
-    <bean name="/base" class="com.xh.web.BaseController">
-        <property name="methodNameResolver" ref="parameterMethodNameResolver"/>
-    </bean>
+    <!--resolver: /controllerPath/prefix Name suffix-->
+    <!--<bean id="methodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.InternalPathMethodNameResolver">
+        <property name="prefix" value=""/>
+        <property name="suffix" value=""/>
+    </bean>-->
 
     <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
 
@@ -34,7 +37,17 @@
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
+        <property name="order" value="1"/>
     </bean>
 
+    <bean name="freeMarkerViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
+        <property name="suffix" value=".ftl"/>
+        <property name="contentType" value="text/html;charset=utf-8"/>
+        <property name="exposeRequestAttributes" value="true"/>
+        <property name="exposeSessionAttributes" value="true"/>
+        <property name="exposeSpringMacroHelpers" value="true"/>
+        <property name="order" value="0"/>
+    </bean>
 
 </beans>
