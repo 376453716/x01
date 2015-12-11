@@ -5,6 +5,8 @@ import com.xh.dao.MessageDao;
 import com.xh.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,6 +14,7 @@ import java.util.List;
  * Created by xh on 15/3/2.
  */
 @Service("messageServiceH")
+@Transactional(propagation = Propagation.REQUIRED)
 public class MessageServiceHImpl implements MessageService {
     @Autowired
     private MessageDao messageDaoH;
@@ -22,6 +25,7 @@ public class MessageServiceHImpl implements MessageService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public User getUser(Long id) {
         return messageDaoH.getEntity(id);
     }
@@ -37,6 +41,7 @@ public class MessageServiceHImpl implements MessageService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> getAll() {
         return messageDaoH.listEntity();
     }

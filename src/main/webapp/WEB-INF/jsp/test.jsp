@@ -12,6 +12,7 @@
 </head>
 <body>
 spring mvc test.
+<%=request.getContextPath()%>
 
 <form action="/base/test">
     <input type="text" name="name"/>
