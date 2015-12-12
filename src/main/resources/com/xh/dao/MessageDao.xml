@@ -22,7 +22,7 @@
     </update>
 
     <select id="listEntity" resultMap="user1">
-        select * from x_user;
+        select id,name,birthday from x_user
     </select>
 
 </mapper>

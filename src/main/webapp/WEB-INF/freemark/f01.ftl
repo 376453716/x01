@@ -1,17 +1,44 @@
 <html>
-<head>
-    <title>Welcome!</title>
-</head>
 <body>
-<h1>Welcome John Doe!</h1>
+<h1>Index</h1>
 
+<div>get sysdate:${sysdate?datetime}</div>
+<input type="text" name="userId"/>
+<button id="queryBtn">query</button>
 
-<div>get data:${data}</div>
-<div>user-id:${user.id}</div>
-<div>user-name:${user.name}</div>
-<div>user-birthday:${user.birthday?date}</div>
-<div>user-birthday:${user.birthday?time}</div>
-<div>user-birthday:${user.birthday?datetime}</div>
+<table>
+    <tr>
+        <td>id</td>
+        <td>name</td>
+        <td>birthday</td>
+    </tr>
+    <#if (userLst)??>
+        <#list userLst as user>
+            <tr>
+                <td>${user.id}</td>
+                <td>${user.name}</td>
+                <td>${user.birthday?date}</td>
+            </tr>
+        </#list>
+    </#if>
+</table>
+
+${a <#-- common -->}<br>
+${b}<br>
+${c}<br>
+${flg?string('yes','no')}<br>
 
 </body>
+<head>
+    <script type="javascript" src="/static/js/jquery-1.11.3.js"/>
+    <title>Index</title>
+    <script type="javascript">
+        $(function () {
+            $("#queryBtn").click()
+            {
+
+            }
+        });
+    </script>
+</head>
 </html>

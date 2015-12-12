@@ -13,9 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by xionghao on 30/10/2015.
@@ -40,7 +38,7 @@ public class XFreemarkTest {
             cfg = new Configuration(Configuration.VERSION_2_3_22);
             // Specify the source where the template files come from. Here I set a
             // plain directory for it, but non-file-system sources are possible too:2
-            String templatePath = XCommonUtil.getClassFilePath("/") + "/freemark";
+            String templatePath = XCommonUtil.getClassFilePath("/") + "freemark";
             cfg.setDirectoryForTemplateLoading(new File(templatePath));
             // Set the preferred charset template files are stored in. UTF-8 is
             // a good choice in most applications:
@@ -83,7 +81,20 @@ public class XFreemarkTest {
         Map<String, Object> root = new HashMap<String, Object>();
         root.put("data", "simple data model");
         User user = new User(1l, "user 2", new Date());
+        List<User> users = createUsers(5);
         root.put("user", user);
+        root.put("users", null);
+        root.put("price", 0);
         return root;
+    }
+
+    private List<User> createUsers(int capacity) {
+        List<User> users = new ArrayList<User>(capacity);
+        Date date = new Date();
+        for (int i = 0; i < capacity; i++) {
+            User temp = new User(i, "user " + i, date);
+            users.add(temp);
+        }
+        return users;
     }
 }

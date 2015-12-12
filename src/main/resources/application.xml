@@ -13,7 +13,7 @@
     <context:property-placeholder location="classpath*:*.properties"/>
     <context:component-scan base-package="com.xh"/>
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+    <bean id="dataSource" class="com.xh.framework.LoggingBasicDataSource">
         <property name="driverClassName" value="${driverClass}"/>
         <property name="url" value="${jdbcUrl}"/>
         <property name="username" value="${user}"/>
@@ -80,9 +80,9 @@
         <property name="defaultEncoding" value="UTF-8"/>
         <property name="freemarkerSettings">
             <props>
-                <prop key="datetime_format">dd/mm/yyyy</prop>
-                <prop key="date_format">dd/mm/yyyy</prop>
-                <prop key="time_format">dd/mm/yyyy</prop>
+                <prop key="datetime_format">dd/MM/yyyy HH:mm:ss</prop>
+                <prop key="date_format">dd/MM/yyyy</prop>
+                <prop key="time_format">HH:mm:ss</prop>
             </props>
         </property>
     </bean>
