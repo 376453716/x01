@@ -25,6 +25,8 @@
 
     <mvc:resources mapping="/static/**" location="/static/"/>
 
+
+
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
 
     <bean class="com.xh.web.BaseController">
@@ -37,6 +39,7 @@
         <property name="prefix" value=""/>
         <property name="suffix" value=""/>
     </bean>-->
+
 
     <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
 
