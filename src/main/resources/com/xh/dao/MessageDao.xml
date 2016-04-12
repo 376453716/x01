@@ -3,26 +3,35 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.xh.dao.MessageDao">
-    <resultMap id="user1" type="com.xh.Entity.User">
+    <resultMap id="user1" type="user">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="birthday" column="birthday"/>
     </resultMap>
 
     <select id="getEntity" parameterType="Long" resultMap="user1">
-        select id,name,birthday from x_user where id=#{id}
+        select id,name,birthday from user where id=#{id}
     </select>
 
-    <update id="updateEntity" parameterType="com.xh.Entity.User">
-        update x_user set birthday = #{birthday},name=#{name} where id=#{id}
+    <update id="updateEntity" parameterType="user">
+        update user set birthday = #{birthday},name=#{name} where id=#{id}
     </update>
 
-    <update id="saveEntity" parameterType="com.xh.Entity.User">
-      insert x_user (id,name,birthday) values (#{id},#{name},#{birthday})
+    <update id="saveEntity" parameterType="user">
+      insert into user (id,name,birthday) values (#{id},#{name},#{birthday})
     </update>
 
     <select id="listEntity" resultMap="user1">
-        select id,name,birthday from x_user
+        select id,name,birthday from user
+    </select>
+
+    <select id="queryEntity" resultMap="user1" parameterType="user">
+        select id,name,birthday from user
+        <where>
+            <if test="name !=null">
+                name like #{name}
+            </if>
+        </where>
     </select>
 
 </mapper>

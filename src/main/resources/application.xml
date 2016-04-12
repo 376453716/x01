@@ -23,7 +23,7 @@
     <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation"
-                  value="classpath:mybatisConfiguration.xml"/>
+                  value="classpath:/com/xh/dao/mybatisConfiguration.xml"/>
     </bean>
 
     <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -39,7 +39,8 @@
         <property name="hibernateProperties">
             <value>
                 <!-- 设置数据库方言 -->
-                hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
+                <!--hibernate.dialect=org.hibernate.dialect.Oracle10gDialect-->
+                hibernate.dialect=org.hibernate.dialect.MySQLDialect
                 <!-- 设置自动创建|更新|验证数据库表结构 -->
                 hibernate.hbm2ddl.auto=update
                 <!-- 是否在控制台显示sql -->

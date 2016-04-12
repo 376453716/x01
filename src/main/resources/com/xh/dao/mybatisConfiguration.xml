@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="datasource.properties"/>
+    <!--<settings>
+        <setting name="cacheEnable" value="true"/>
+    </settings>-->
+    <!--parameterType,resultType-->
+    <typeAliases>
+        <package name="com.xh.Entity"/>
+    </typeAliases>
+    <!--<typeHandlers>
+          <typeHandler handler="" javaType="" jdbcType=""/>
+          <package name=""/>
+      </typeHandlers>-->
+    <!--<objectFactory type="DefaultObjectFactory"/>-->
+    <!--
+<plugins>
+            <plugin interceptor="com.xh.mybatis.ExamplePluginInterceptor"></plugin>
+    </plugins>
+    -->
+    <plugins>
+        <plugin interceptor="com.xh.mybatis.PageQueryInterceptor"></plugin>
+    </plugins>
+
+    <environments default="development">
+        <environment id="DEV">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driverClass}"/>
+                <property name="url" value="${jdbcUrl}"/>
+                <property name="username" value="${user}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+        <environment id="SIT">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driverClass}"/>
+                <property name="url" value="${jdbcUrl}"/>
+                <property name="username" value="${user}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="com/xh/dao/MessageDao.xml"/>
+    </mappers>
+</configuration>
