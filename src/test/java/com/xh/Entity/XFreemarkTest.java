@@ -1,5 +1,6 @@
 package com.xh.Entity;
 
+import com.xh.authentic.entity.User;
 import com.xh.util.XCommonUtil;
 import freemarker.template.Configuration;
 import freemarker.template.Template;

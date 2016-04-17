@@ -1,6 +1,6 @@
 package com.xh.service.impl;
 
-import com.xh.Entity.User;
+import com.xh.authentic.entity.User;
 import com.xh.dao.MessageDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

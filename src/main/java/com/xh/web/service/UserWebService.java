@@ -1,6 +1,6 @@
 package com.xh.web.service;
 
-import com.xh.Entity.User;
+import com.xh.authentic.entity.User;
 
 import javax.jws.WebParam;
 import javax.jws.WebService;

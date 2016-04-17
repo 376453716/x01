@@ -1,6 +1,6 @@
 package com.xh.service;
 
-import com.xh.Entity.User;
+import com.xh.authentic.entity.User;
 
 import java.util.List;
 

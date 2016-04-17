@@ -1,5 +1,6 @@
 package com.xh.Entity;
 
+import com.xh.authentic.entity.User;
 import com.xh.web.service.UserWebService;
 import org.apache.log4j.Logger;
 import org.junit.Test;

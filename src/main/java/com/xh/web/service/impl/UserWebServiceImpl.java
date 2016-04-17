@@ -1,6 +1,6 @@
 package com.xh.web.service.impl;
 
-import com.xh.Entity.User;
+import com.xh.authentic.entity.User;
 import com.xh.service.MessageService;
 import com.xh.web.service.UserWebService;
 import org.apache.log4j.Logger;
