@@ -7,8 +7,8 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <title>Theme Template for Bootstrap</title>
-    <link href="../../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../static/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="${request.getContextPath()}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${request.getContextPath()}/static/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
 </head>
 <body role="document">
 <!-- Fixed navbar -->
@@ -607,7 +607,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="../../static/js/jquery-1.11.3.js"></script>
-<script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+<script src="${request.getContextPath()}/static/js/jquery-1.11.3.js"></script>
+<script src="${request.getContextPath()}/static/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

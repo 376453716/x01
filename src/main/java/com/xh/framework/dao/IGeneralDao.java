@@ -15,4 +15,6 @@ public interface IGeneralDao<T, PK extends Serializable> {
     T getEntity(PK id);
 
     List<T> listEntity();
+
+    List<T> queryEntity(T entity);
 }

@@ -29,8 +29,12 @@ public abstract class GeneralDaoHibernateImpl<T, PK extends Serializable> extend
     }
 
     public List<T> listEntity() {
-        this.getHibernateTemplate().find("From User");
-        return null;
+        return (List<T>) this.getHibernateTemplate().find("From User");
+    }
+
+    @Override
+    public List<T> queryEntity(T entity) {
+        return (List<T>) this.getHibernateTemplate().find("From User");
     }
 
     public T getEntity(PK id) {

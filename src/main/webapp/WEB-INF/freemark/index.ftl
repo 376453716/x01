@@ -56,6 +56,11 @@
         <p>This example is a index page.</p>
 
         <p>
+        ${id}<br>
+        ${password}
+        </p>
+
+        <p>
             <a class="btn btn-lg btn-primary" href="#" role="button">
                 View more &raquo;</a>
         </p>

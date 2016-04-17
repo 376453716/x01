@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xh.dao.UserDao">
+    <resultMap id="user1" type="user">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="birthday" column="birthday" javaType="java.util.Date" jdbcType="DATE"/>
+    </resultMap>
+
+    <select id="getEntity" parameterType="Long" resultMap="user1">
+        select id,name,birthday from user where id=#{id}
+    </select>
+
+    <update id="updateEntity" parameterType="user">
+        update user set birthday = #{birthday,jdbcType=DATE},name=#{name} where id=#{id}
+    </update>
+
+    <insert id="saveEntity" parameterType="user" useGeneratedKeys="true" keyProperty="id">
+        insert into user (name,birthday) values (#{name},#{birthday,jdbcType=DATE})
+    </insert>
+
+    <select id="listEntity" resultMap="user1">
+        select id,name,birthday from user
+    </select>
+
+    <select id="queryEntity" resultMap="user1" parameterType="user">
+        select id,name,birthday from user
+        <where>
+            <include refid="conditoion"/>
+            <![CDATA[ order by ID desc]]>
+        </where>
+    </select>
+
+    <sql id="conditoion">
+        <if test="name !=null">
+            name like #{name}
+        </if>
+        <if test="birthday !=null">
+            birthday BETWEEN
+            #{birthday} and CONCAT(#{birthday}, ' 23:59:59')
+        </if>
+
+    </sql>
+</mapper>
