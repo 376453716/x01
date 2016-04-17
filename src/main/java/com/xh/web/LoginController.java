@@ -10,6 +10,7 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by xionghao on 10/12/2015.
@@ -19,14 +20,23 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginController extends MultiActionController {
 
     @RequestMapping("/loginCheck")
-    public ModelAndView loginCheck(@RequestParam("inputEmail") String id, String password) throws Exception {
+    public ModelAndView loginCheck(@RequestParam("inputEmail") String id, String password, HttpSession session) throws Exception {
         logger.info(id);
         logger.info(password);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("id", id);
         modelAndView.addObject("password", password);
         modelAndView.setViewName("index");
+        if (isValidUser(id, password)) {
+            session.setAttribute("userId", id);
+        } else {
+            modelAndView.setViewName("login");
+        }
         return modelAndView;
+    }
+
+    private boolean isValidUser(String id, String password) {
+        return true;
     }
 
     @RequestMapping("/main")

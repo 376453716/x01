@@ -24,7 +24,7 @@
     <div class="page-header">
         <h1>Tables</h1>
     </div>
-    <form id="updateUserForm" action="${request.getContextPath()}/user/update" method="post">
+    <form id="updateUserForm" action="${request.getContextPath()}/authentic/update" method="post">
         <div class="row">
             <div class="col-md-6">
                 <table class="table table-bordered">

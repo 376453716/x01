@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Starter Template for Bootstrap</title>
     <!-- Bootstrap core CSS -->
-    <link href="../../static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="${request.getContextPath()}/static/bootstrap/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
@@ -27,7 +27,7 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="${request.getContextPath()}/authentic/main">Contact</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Dropdown <span class="caret"></span></a>

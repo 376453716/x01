@@ -1,3 +1,4 @@
+/*
 package com.xh.rabbit.web;
 
 import com.alibaba.fastjson.JSON;
@@ -17,9 +18,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+*/
 /**
  * Created by xh on 30/01/16.
- */
+ *//*
+
 public class CompanyProcessor implements PageProcessor {
 
     private final static String COMPANY_LIST_URL = "http://cd\\.to8to\\.com/company/list_\\d+\\.html";
@@ -100,3 +103,4 @@ public class CompanyProcessor implements PageProcessor {
                 thread(1).run();
     }
 }
+*/

@@ -44,7 +44,7 @@
                         <td>${user.id}</td>
                         <td>${user.name}</td>
                         <td>${user.birthday?date}</td>
-                        <td><a href="${request.getContextPath()}/user/detail?id=${user.id}">${user.id}</a></td>
+                        <td><a href="${request.getContextPath()}/authentic/detail?id=${user.id}">${user.id}</a></td>
                     </tr>
                     </#list>
                 </#if>
@@ -53,7 +53,7 @@
         </div>
     </div>
 
-    <form id="queryUserForm" action="${request.getContextPath()}/user/list" method="post">
+    <form id="queryUserForm" action="${request.getContextPath()}/authentic/list" method="post">
         <input type="text" name="name" id="userName" class="form-control" required autofocus>
         <button type="button" class="btn btn-sm btn-default" onclick="query()">query</button>
         <button type="button" class="btn btn-sm btn-default" onclick="add()">add</button>
@@ -67,11 +67,11 @@
 <script src="${request.getContextPath()}/static/bootstrap/js/bootstrap.min.js"></script>
 <script>
     function query() {
-        $("#queryUserForm").attr("action", "${request.getContextPath()}/user/list");
+        $("#queryUserForm").attr("action", "${request.getContextPath()}/authentic/list");
         $("#queryUserForm").submit();
     }
     function add() {
-        $("#queryUserForm").attr("action", "${request.getContextPath()}/user/input");
+        $("#queryUserForm").attr("action", "${request.getContextPath()}/authentic/input");
         $("#queryUserForm").submit();
     }
 </script>

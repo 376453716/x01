@@ -1,40 +1,44 @@
-package com.xh.web.user;
+package com.xh.authentic.controller;
 
-import com.xh.Entity.User;
-import com.xh.service.user.UserService;
+import com.xh.authentic.entity.User;
+import com.xh.authentic.service.AuthenticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by xh on 03/04/16.
+ * Created by xh on 2016/4/17.
  */
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/authentic")
+public class AuthenticController {
 
     @Autowired
-    private UserService userService;
+    private AuthenticService authenticService;
+
+    @RequestMapping("/main")
+    public String userMain() {
+        return "user/userMain";
+    }
 
     @RequestMapping("/list")
     public ModelAndView list(User user) {
         ModelAndView mv = new ModelAndView();
-        user.setName("%" + user.getName() + "%");
-        List<User> list = userService.queryUserList(user);
+        user.setName(user.getName());
+        List<User> list = authenticService.queryUserList(user);
         mv.addObject("userList", list);
-        mv.setViewName("user/userList");
+        mv.setViewName("user/userMain");
         return mv;
     }
 
     @RequestMapping("/detail")
     public ModelAndView detail(@RequestParam(required = true) Long id) {
         ModelAndView mv = new ModelAndView();
-        User user = userService.getUser(id);
+        User user = authenticService.getUser(id);
         mv.addObject("user", user);
         mv.setViewName("user/userDetail");
         return mv;
@@ -43,7 +47,7 @@ public class UserController {
     @RequestMapping("/update")
     public String update(User user) {
         ModelAndView mv = new ModelAndView();
-        userService.updateUser(user, user.getId());
+        authenticService.updateUser(user, user.getId());
         return "redirect:list";
     }
 
@@ -54,7 +58,7 @@ public class UserController {
 
     @RequestMapping("/add")
     public String add(User user) {
-        userService.addUser(user);
+        authenticService.addUser(user);
         return "redirect:list";
     }
 }

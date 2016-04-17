@@ -1,6 +1,6 @@
 package com.xh.mybatis;
 
-import com.xh.Entity.User;
+import com.xh.authentic.entity.User;
 import com.xh.dao.MessageDao;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class MapperTest {
     @Test
     public void test1() {
         try (InputStream resources = Resources.getResourceAsStream("com/xh/dao/mybatisConfiguration.xml");) {
-            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(resources,"DEV");
+            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(resources, "DEV");
             try (SqlSession session = factory.openSession();) {
                 User user = session.selectOne("getEntity", 1l);
                 log.info(user.toString());

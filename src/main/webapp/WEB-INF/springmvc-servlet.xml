@@ -21,11 +21,24 @@
         </property>
     </bean>-->
 
-    <context:component-scan base-package="com.xh.web"/>
+    <context:component-scan base-package="com.xh">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>
 
     <mvc:resources mapping="/static/**" location="/static/"/>
 
     <mvc:annotation-driven conversion-service="conversionService"/>
+
+    <!--拦截器 -->
+    <mvc:interceptors>
+        <!--多个拦截器,顺序执行 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.xh.authentic.interceptor.AuthenticInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <!-- conversionService -->
     <bean id="conversionService"
           class="org.springframework.format.support.FormattingConversionServiceFactoryBean">

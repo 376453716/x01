@@ -1,3 +1,4 @@
+/*
 package com.xh.rabbit.web;
 
 import com.alibaba.fastjson.JSON;
@@ -12,9 +13,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+*/
 /**
  * Created by xh on 30/01/16.
- */
+ *//*
+
 public class MyJsonFIlePipeLine extends JsonFilePipeline {
 
 
@@ -38,3 +41,4 @@ public class MyJsonFIlePipeLine extends JsonFilePipeline {
 
     }
 }
+*/

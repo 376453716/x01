@@ -1,14 +1,13 @@
-package com.xh.service.user;
+package com.xh.authentic.service;
 
-import com.xh.Entity.User;
+import com.xh.authentic.entity.User;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by xh on 03/04/16.
+ * Created by xh on 2016/4/17.
  */
-public interface UserService {
+public interface AuthenticService {
 
     User getUser(Long id);
 
@@ -19,6 +18,4 @@ public interface UserService {
     void addUser(User user);
 
     void updateUser(User user, Long id);
-
-
 }
