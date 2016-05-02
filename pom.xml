@@ -6,8 +6,11 @@
 
     <groupId>${id}</groupId>
     <artifactId>x01</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>shiro-demo</module>
+    </modules>
     <!-- <repositories>
          <repository>
              <id>nexus</id>
@@ -216,6 +219,12 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
+        <dependency>
+            <groupId>org.lazyluke</groupId>
+            <artifactId>log4jdbc-remix</artifactId>
+            <version>0.2.7</version>
+        </dependency>
+
 
     </dependencies>
 

@@ -46,6 +46,15 @@
         <property name="filters" value="stat"/>
     </bean>
 
+    <bean id="dataSource4log" class="net.sf.log4jdbc.Log4jdbcProxyDataSource" >
+        <constructor-arg ref="dataSource" />
+        <property name="logFormatter">
+            <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter" >
+                <property name="loggingType" value="SINGLE_LINE" />
+                <property name="sqlPrefix" value="SQL:::" />
+            </bean>
+        </property>
+    </bean >
     <!--<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation"
@@ -57,7 +66,7 @@
       </bean>-->
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="dataSource4log"/>
         <property name="hibernateProperties">
             <value>
                 <!-- 设置数据库方言 -->
@@ -65,9 +74,9 @@
                 <!-- 设置自动创建|更新|验证数据库表结构 -->
                 hibernate.hbm2ddl.auto=update
                 <!-- 是否在控制台显示sql -->
-                hibernate.show_sql=true
+                hibernate.show_sql=false
                 <!-- 是否格式化sql，优化显示 -->
-                hibernate.format_sql=true
+                hibernate.format_sql=false
                 <!-- 是否开启二级缓存 -->
                 hibernate.cache.use_second_level_cache=false
                 <!-- 是否开启查询缓存 -->
@@ -100,7 +109,7 @@
     <tx:annotation-driven transaction-manager="hibernateTransactionManager"/>
     <bean id="hibernateTransactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
-        <property name="dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="dataSource4log"/>
     </bean>
 
     <bean id="freeMarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">

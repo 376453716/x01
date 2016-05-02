@@ -1,12 +1,18 @@
 package com.xh.authentic.entity;
 
+import com.xh.framework.entity.BaseEntity;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by xh on 2016/4/17.
  */
-public class Role {
+@Entity
+@Table(name = "tb_role")
+public class Role extends BaseEntity {
     @Id
     @TableGenerator(
             name = "id_generator",
@@ -26,19 +32,51 @@ public class Role {
     @Column(name = "DESCRIPTION")
     private String description;
 
-    @Column(name = "deleteFlag")
-    private boolean deleteFlag;
+    @ManyToMany(targetEntity = Resource.class)
+    @JoinTable(name = "tb_role_resource", joinColumns = @JoinColumn(name = "roleId"), inverseJoinColumns = @JoinColumn(name = "resourceId"))
+    private Set<Resource> resources;
 
-    @Column(name = "creator")
-    private String creator;
 
-    @Column(name = "modifyer")
-    private String modifyer;
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 
-    @Column(name = "createDate")
-    private Date createDate;
+    public Long getRoleId() {
+        return roleId;
+    }
 
-    @Column(name = "modifyDate")
-    private Date modifyDate;
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Set<Resource> getResources() {
+        return resources;
+    }
+
+    public void setResources(Set<Resource> resources) {
+        this.resources = resources;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 }

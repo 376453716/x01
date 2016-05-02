@@ -8,6 +8,7 @@ import java.util.List;
  */
 public interface IGeneralDao<T, PK extends Serializable> {
 
+
     void saveEntity(T entity);
 
     void updateEntity(T entity);
@@ -54,10 +55,10 @@ public interface IGeneralDao<T, PK extends Serializable> {
 
     public int countBySQL(String sql, Object... pars);
 
-    //HQL£¬É¾¸Ä
+    //HQLï¿½ï¿½É¾ï¿½ï¿½
     public int executeHQL(String hql, Object... pars);
 
-    //SQL,Ôö¸Ä
+    //SQL,ï¿½ï¿½ï¿½ï¿½
     public int executeSQL(String sql, Object... pars);
 
     public void saveOrUpdateEntity(Object obj);

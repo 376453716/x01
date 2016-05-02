@@ -81,7 +81,7 @@ public class XFreemarkTest {
     private Map<String, Object> createDataModel() {
         Map<String, Object> root = new HashMap<String, Object>();
         root.put("data", "simple data model");
-        User user = new User(1l, "user 2", new Date());
+        User user = new User();
         List<User> users = createUsers(5);
         root.put("user", user);
         root.put("users", null);
@@ -93,7 +93,7 @@ public class XFreemarkTest {
         List<User> users = new ArrayList<User>(capacity);
         Date date = new Date();
         for (int i = 0; i < capacity; i++) {
-            User temp = new User(i, "user " + i, date);
+            User temp = new User();
             users.add(temp);
         }
         return users;

@@ -19,7 +19,7 @@
     <#list users as user>
     ${user}<br>
     <#else>
-    No record.
+    No user record.
     </#list>
 <#else>
 No record.

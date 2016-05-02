@@ -1,15 +1,18 @@
 package com.xh.authentic.entity;
 
+import com.xh.framework.entity.BaseEntity;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by xh on 2016/4/17.
  */
 @Entity
 @Table(name = "tb_user")
-public class User {
+public class User extends BaseEntity {
     @Id
     @TableGenerator(
             name = "id_generator",
@@ -20,7 +23,7 @@ public class User {
             allocationSize = 1
     )
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "id_generator")
-    @Column(name = "userId")
+    @Column(name = "ID")
     private Long id;
     @Column(name = "email")
     private String email;
@@ -32,28 +35,13 @@ public class User {
     private String name;
     @Column(name = "active")
     private boolean active;
-    @Column(name = "deleteFlag")
-    private boolean deleteFlag;
-    @Column(name = "creator")
-    private String creator;
-    @Column(name = "modifyer")
-    private String modifyer;
-    @Column(name = "createDate")
-    private Date createDate;
     @Column(name = "birthday")
     private Date birthday;
-    @Column(name = "modifyDate")
-    private Date modifyDate;
 
-    public User() {
-    }
-
-    public User(long id, String name, Date createDate) {
-    }
-
-    public String getCreator() {
-        return creator;
-    }
+    @ManyToMany(targetEntity = Role.class)
+    @JoinTable(name = "tb_user_roles", joinColumns = @JoinColumn(name = "userIds"),
+            inverseJoinColumns = @JoinColumn(name = "roleIds"))
+    private Set<Role> roles;
 
     public Long getId() {
         return id;
@@ -103,47 +91,19 @@ public class User {
         this.active = active;
     }
 
-    public boolean isDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(boolean deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
-
-    public String getModifyer() {
-        return modifyer;
-    }
-
-    public void setModifyer(String modifyer) {
-        this.modifyer = modifyer;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Date getModifyDate() {
-        return modifyDate;
-    }
-
-    public void setModifyDate(Date modifyDate) {
-        this.modifyDate = modifyDate;
-    }
-
     public Date getBirthday() {
         return birthday;
     }
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
